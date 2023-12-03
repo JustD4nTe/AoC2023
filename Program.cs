@@ -1,4 +1,5 @@
 ﻿//Console.WriteLine(Day1.PartOne.Solve());
 //Console.WriteLine(Day1.PartTwo.Solve());
 
-Console.WriteLine(Day2.PartOne.Solve());
+//Console.WriteLine(Day2.PartOne.Solve());
+Console.WriteLine(Day2.PartTwo.Solve());

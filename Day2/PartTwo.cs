@@ -1,0 +1,63 @@
+namespace Day2;
+
+static class PartTwo
+{
+    static string test1 = "../../../Day2/test1.txt";
+    static string input = "../../../Day2/input.txt";
+    public static long Solve()
+    {
+        var rawInput = File.ReadAllLines(input);
+
+        const int numberOfGames = 100;
+        var games = new List<Game>();
+
+        for(var i = 0; i < numberOfGames; i++)
+        {
+            var currGame = new Game(i + 1);
+
+            var setsOfRevealedCubesInGame = rawInput[i].Split(":")[1]
+                                                       .Split(";");
+
+            foreach (var setOfRevealedCubesInGame in setsOfRevealedCubesInGame)
+            {
+                var revealedCubes = setOfRevealedCubesInGame.Split(",");
+                foreach (var revealedCube in revealedCubes)
+                {
+                    var cubeInfo = revealedCube.Split(" ");
+                    var cubeCount = int.Parse(cubeInfo[1]);
+                    Enum.TryParse(cubeInfo[2], true, out CubeColor cubeColor);
+                    currGame.AddCubeSet(new(cubeCount, cubeColor));
+                }
+            }
+
+            games.Add(currGame); 
+        }
+
+        return games.Sum(x => x.GetPowerOfMinimumSetOfCubes());
+    }
+
+    private enum CubeColor
+    {
+        Blue,
+        Red,
+        Green
+    }
+
+    private record CubeSet(int CubeCount, CubeColor CubeColor);
+
+    private record Game(int Id)
+    {
+        private readonly List<CubeSet> _cubeSets = [];
+        public int Id = Id;
+
+        public void AddCubeSet(CubeSet cubeSet) => _cubeSets.Add(cubeSet);
+
+        public int GetPowerOfMinimumSetOfCubes()
+            => GetSingleColorCubes(CubeColor.Blue).Max(x => x.CubeCount)
+               * GetSingleColorCubes(CubeColor.Red).Max(x => x.CubeCount)
+               * GetSingleColorCubes(CubeColor.Green).Max(x => x.CubeCount);
+
+        private IEnumerable<CubeSet> GetSingleColorCubes(CubeColor cubeColor) 
+            => _cubeSets.Where(x => x.CubeColor == cubeColor);
+    }
+}
