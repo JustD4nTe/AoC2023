@@ -7,4 +7,5 @@
 //Console.WriteLine(Day3.PartOne.Solve());
 //Console.WriteLine(Day3.PartTwo.Solve());
 
-Console.WriteLine(Day4.PartOne.Solve());
+//Console.WriteLine(Day4.PartOne.Solve());
+Console.WriteLine(Day4.PartTwo.Solve());
