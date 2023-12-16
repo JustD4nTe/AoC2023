@@ -29,4 +29,6 @@
 //Console.WriteLine(Day10.PartTwo.Solve());
 
 //Console.WriteLine(Day11.PartOne.Solve());
-Console.WriteLine(Day11.PartTwo.Solve());
+//Console.WriteLine(Day11.PartTwo.Solve());
+
+Console.WriteLine(Day12.PartOne.Solve());
