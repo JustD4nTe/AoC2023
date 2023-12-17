@@ -33,4 +33,5 @@
 
 //Console.WriteLine(Day12.PartOne.Solve());
 
-Console.WriteLine(Day14.PartOne.Solve());
+//Console.WriteLine(Day14.PartOne.Solve());
+Console.WriteLine(Day14.PartTwo.Solve());
